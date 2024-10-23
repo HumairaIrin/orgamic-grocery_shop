@@ -4,7 +4,13 @@
 
 <link rel="stylesheet" href="{% static 'style.css' %}">
 
-<div class="home" style="padding:0 9% 0; height: 85vh">
+<!-- 
+     - #home
+-->
+
+
+
+<div class="home" style="padding:0 9% 0; height: 85vh; margin-top: 6%">
     {% comment %} <div class="home-img">
         <img src="{% static 'landing.png' %}" alt="">
     </div> {% endcomment %}
@@ -22,11 +28,30 @@
         <a href="#" class="btn">Download App</a>
     </div>
 </div>
-<div style="display: flex; margin-block: 10%">
-    <img src="{% static 'safeShipping.gif' %}" alt="">
-    <img src="{% static 'freeServices.gif' %}" alt="">
-    <img src="{% static 'tracking.gif' %}" alt="">
+
+
+
+<!-- 
+    - #nutrition section
+-->
+
+
+<div class="nutritions">
+        <h1 style="font-size: 5rem; color: #4d6a0f">Nutrition Facts</h1>
+
+      <div>
+        <img src="{% static 'nutritions_facts.png' %}" loading="lazy" alt="nutritions">
+      </div>
 </div>
+
+
+
+<!-- 
+    - #offer section
+-->
+
+
+
 <div class="cta">
     <div class="container">
 
@@ -37,9 +62,74 @@
       <p class="cta-text">
         It has survived not only five centuries also leaped.
       </p>
-      
+
       <a href="/home/" class="btn">Shop Now <i class="fa-duotone fa-solid fa-angles-right" style="--fa-primary-color: #ffffff; --fa-secondary-color: #b8b8b8;"></i></a>
 
     </div>
 </div>
+
+
+
+ <!-- 
+        - #pop-up section
+ -->
+
+
+
+<div style="display: flex; margin-block: 5%">
+    <img src="{% static 'safeShipping.gif' %}" alt="">
+    <img src="{% static 'freeServices.gif' %}" alt="">
+    <img src="{% static 'tracking.gif' %}" alt="">
+</div>
+
+ <!-- 
+        - #PARTNER
+ -->
+
+
+<div class="partners">
+    <div class="container">
+
+        <h1 style="font-size: 5rem; color: #4d6a0f">Trusted Partners</h1>
+
+      <p class="cta-text">We try to serve you the best</p>
+
+      <div class="partners-logo">
+        <img class="blur-image" src="{% static 'partner-1.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
+        <img class="blur-image" src="{% static 'partner-2.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
+        <img class="blur-image" src="{% static 'partner-3.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
+        <img class="blur-image" src="{% static 'partner-4.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
+        <img class="blur-image" src="{% static 'partner-5.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
+        <img class="blur-image" src="{% static 'partner-6.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
+      </div>
+    </div>
+</div>
+
+
+
+  <!-- 
+        - #NEWSLETTER
+      -->
+
+      <div class="newsletter" style="background-color: #1e272e">
+        <div class="container">
+
+          <div class="newsletter-card">
+
+            <p class="newsletter-subtitle"> -- Subscribe Orgamic --</p>
+
+            <h2 class="newsletter-title">Sign Up To Orgamic & Get <span class="neon-text" style="color: #beda83">20% Off.</span></h2>
+
+            <form action="" class="newsletter-form">
+
+              <input type="email" name="email" placeholder="Enter your email" required class="input-email">
+
+              <a href="/home/" class="btn">Sign Up <i class="fa-duotone fa-solid fa-angles-right" style="--fa-primary-color: #ffffff; --fa-secondary-color: #b8b8b8;"></i></a>
+
+            </form>
+
+          </div>
+
+        </div>
+    </div>
 {% endblock %}
