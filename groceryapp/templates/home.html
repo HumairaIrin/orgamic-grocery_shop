@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% block body %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<div class="home" style="padding:0 9% 0; height: 85vh">
+    {% comment %} <div class="home-img">
+        <img src="{% static 'landing.png' %}" alt="">
+    </div> {% endcomment %}
+    <div class="home-content">
+        <h1>Welcome to,, <span>ORGAMIC</span></h1>
+        <h3 class="typing-text">Here you can find <span></span></h3>
+        <p>Your local market, just a click away.
+            Experience the joy of fresh ingredients delivered right to your door!</p>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-phone"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <a href="#" class="btn">Download App</a>
+    </div>
+</div>
+<div style="display: flex; margin-block: 10%">
+    <img src="{% static 'safeShipping.gif' %}" alt="">
+    <img src="{% static 'freeServices.gif' %}" alt="">
+    <img src="{% static 'tracking.gif' %}" alt="">
+</div>
+<div class="cta">
+    <div class="container">
+
+        <h1 style="font-size: 5rem; color: #4d6a0f">Summer Offer</h1>
+
+      <h2 class="h2 section-title">Up To 50% Off All Product.</h2>
+
+      <p class="cta-text">
+        It has survived not only five centuries also leaped.
+      </p>
+      
+      <a href="/home/" class="btn">Shop Now <i class="fa-duotone fa-solid fa-angles-right" style="--fa-primary-color: #ffffff; --fa-secondary-color: #b8b8b8;"></i></a>
+
+    </div>
+</div>
+{% endblock %}

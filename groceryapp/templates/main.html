@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Grocery Shop</title>
+</head>
+<body>
+        <header style="background-color: white; margin-top: 0px; position: sticky">
+            {% comment %} <a href="#" class="logo">Online Grocery Shop</a> {% endcomment %}
+            <img class="logo" src="{% static 'orgamic.png' %}" alt=""  style="width: 6vw;">
+    
+            <nav>
+                <a href="/home/" class="active"> Home</a>
+                <a href="/about/" >About</a>
+                <a href="#" >Cart</a>
+                <a href="#" >Wishlist</a>
+                <a href="#" >Login</a>
+                <a href="#" >Sign Up</a>
+            </nav>
+        </header>
+        {% block body %}
+        {% endblock %}
+        <footer style="background-color: #7b9346; color: #fff; padding: 20px 0;">
+            <div style="display: flex; justify-content: space-around; align-items: center; max-width: 1200px; margin: auto;">
+                <div>
+                    <h4 style="margin: 0;">Online Grocery Shop</h4>
+                    <p style="margin: 5px 0;">&copy; 2024 All rights reserved.</p>
+                </div>
+                <div>
+                    <h4 style="margin: 0;">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0; margin: 5px 0;">
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Home</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Products</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">Contact Us</a></li>
+                        <li><a href="#" style="color: #fff; text-decoration: none;">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin: 0;">Follow Us</h4>
+                    <div>
+                        <a href="#" style="color: #fff; text-decoration: none; margin-right: 10px;">Facebook</a>
+                        <a href="#" style="color: #fff; text-decoration: none; margin-right: 10px;">Twitter</a>
+                        <a href="#" style="color: #fff; text-decoration: none;">Instagram</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="margin: 0;">Contact Us</h4>
+                    <p style="margin: 5px 0;">Email: support@onlinegroceries.com</p>
+                    <p style="margin: 5px 0;">Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+        </footer>
+</body>
+</html>
