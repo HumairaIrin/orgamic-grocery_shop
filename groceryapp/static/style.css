@@ -284,13 +284,76 @@ span{
     margin-bottom: 5%;
 }
 
-.partners-logo {
+.partners-title {
+    font-size: 5rem;
+    color: #4d6a0f;
+    position: relative;
+    opacity: 0; /* Start invisible */
+    transform: translateY(-50px); /* Start above */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+.partners-description {
+    font-size: 1.7rem;
+    margin-block: 15px 30px;
+}
+.partners-logos {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
 }
-.blur-image {
-    animation: blurToRegular 1s forwards; /* Animate over 3 seconds */
+
+.partner-logo {
+    width: 132px;
+    height: 134px;
+    margin: 10px;
+    filter: blur(10px); /* Initial blur effect */
+    transition: filter 0.5s ease, opacity 0.5s ease; /* Smooth transition */
+    opacity: 0; /* Start invisible */
+}
+
+.left .partner-logo {
+    transform: translateX(-50px); /* Start from the left */
+}
+
+.right .partner-logo {
+    transform: translateX(50px); /* Start from the right */
+}
+
+.partner-logo.show {
+    filter: blur(0); /* Clear effect */
+    opacity: 1; /* Fade in */
+    transform: translateX(0); /* Move to original position */
+}
+
+.show-title {
+    opacity: 1; /* Fade in header */
+    transform: translateY(0); /* Move to original position */
+}
+
+
+.features {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.feature-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.feature-item {
+    opacity: 0; /* Start invisible */
+    transform: translateX(100px); /* Start off to the right */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    margin: 0 20px;
+}
+
+.feature-item.show {
+    opacity: 1; /* Fade in */
+    transform: translateX(0); /* Move to original position */
 }
 
 @keyframes blurToRegular {
@@ -314,7 +377,7 @@ span{
 .newsletter {
     margin-inline: 15%;
     margin-block: 5%;
-    padding-block: 100px;
+    padding-block: 30px;
     background-image: url(partner-left-bg.png), url(partner-right-bg.png);
     background-repeat: no-repeat, no-repeat;
     background-position: bottom left, top right;

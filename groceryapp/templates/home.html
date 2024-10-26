@@ -3,6 +3,7 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'style.css' %}">
+<script src="{% static 'script.js' %}" defer></script>
 
 <!-- 
      - #home
@@ -77,9 +78,9 @@
 
 
 <div style="display: flex; margin-block: 5%">
-    <img src="{% static 'safeShipping.gif' %}" alt="">
-    <img src="{% static 'freeServices.gif' %}" alt="">
-    <img src="{% static 'tracking.gif' %}" alt="">
+    <img src="{% static 'safeShipping.gif' %}" alt="" width="220" height="234">
+    <img src="{% static 'freeServices.gif' %}" alt="" width="220" height="234">
+    <img src="{% static 'tracking.gif' %}" alt="" width="220" height="234">
 </div>
 
  <!-- 
@@ -90,22 +91,42 @@
 <div class="partners">
     <div class="container">
 
-        <h1 style="font-size: 5rem; color: #4d6a0f">Trusted Partners</h1>
+        <h1  class="partners-title" >Trusted Partners</h1>
 
-      <p class="cta-text">We try to serve you the best</p>
+      <p class="partners-description">We try to serve you the best</p>
 
-      <div class="partners-logo">
-        <img class="blur-image" src="{% static 'partner-1.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
-        <img class="blur-image" src="{% static 'partner-2.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
-        <img class="blur-image" src="{% static 'partner-3.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
-        <img class="blur-image" src="{% static 'partner-4.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
-        <img class="blur-image" src="{% static 'partner-5.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
-        <img class="blur-image" src="{% static 'partner-6.png' %}" width="132" height="134" loading="lazy" alt="Partner logo">
-      </div>
+      <div class="partners-logos">
+        <div class="logo-container left">
+            <img class="partner-logo fade-image" src="{% static 'partner-1.png' %}" width="220" height="234" loading="lazy" alt="Partner logo">
+            <img class="partner-logo fade-image" src="{% static 'partner-2.png' %}" width="220" height="234" loading="lazy" alt="Partner logo">
+            <img class="partner-logo fade-image" src="{% static 'partner-3.png' %}" width="220" height="234" loading="lazy" alt="Partner logo">
+        </div>
+        <div class="logo-container right">
+            <img class="partner-logo fade-image" src="{% static 'partner-4.png' %}" width="220" height="234" loading="lazy" alt="Partner logo">
+            <img class="partner-logo fade-image" src="{% static 'partner-5.png' %}" width="220" height="234" loading="lazy" alt="Partner logo">
+            <img class="partner-logo fade-image" src="{% static 'partner-6.png' %}" width="220" height="234" loading="lazy" alt="Partner logo">
+        </div>
+    </div>
     </div>
 </div>
 
-
+<div class="features" id="features">
+    <h2>Features of Orgamic</h2>
+    <div class="feature-container">
+        <div class="feature-item">
+            <h3>1. Fresh Produce</h3>
+            <p>Get the freshest organic fruits and vegetables delivered to your doorstep.</p>
+        </div>
+        <div class="feature-item">
+            <h3>2. Convenient Shopping</h3>
+            <p>Shop easily from the comfort of your home with our user-friendly platform.</p>
+        </div>
+        <div class="feature-item">
+            <h3>3. Quick Delivery</h3>
+            <p>Enjoy fast and reliable delivery services to ensure you get your groceries on time.</p>
+        </div>
+    </div>
+</div>
 
   <!-- 
         - #NEWSLETTER
