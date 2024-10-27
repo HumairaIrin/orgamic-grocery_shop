@@ -18,11 +18,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from groceryapp.views import main, about, home
+from groceryapp.views import main, home, about, login 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', main, name="main"),
     path('home/', home, name="home"),
     path('about/', about, name="about"),
+    path('login/', login, name="login"),
 ]
