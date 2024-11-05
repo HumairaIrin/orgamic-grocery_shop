@@ -1,15 +1,35 @@
-// document.addEventListener("scroll", () => {
-//     const images = document.querySelectorAll(".blur-image");
-//     const windowHeight = window.innerHeight;
 
-//     images.forEach((image) => {
-//         const imagePosition = image.getBoundingClientRect().top;
+// NAVBAR======================
 
-//         if (imagePosition < windowHeight) {
-//             image.classList.add("show");
-//         }
-//     });
-// });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  // Get the current path
+  const currentPath = window.location.pathname;
+
+  navLinks.forEach(link => {
+      // If the link's href matches the current path, set it as active
+      if (link.getAttribute('href') === currentPath) {
+          link.classList.add('active');
+      } else {
+          link.classList.remove('active');
+      }
+
+      // Add click event listener
+      link.addEventListener('click', function() {
+          // Remove the active class from all links
+          navLinks.forEach(nav => nav.classList.remove('active'));
+          // Add the active class to the clicked link
+          this.classList.add('active');
+      });
+  });
+});
+
+
+
+
+
 
 
 document.addEventListener("scroll", () => {
@@ -37,6 +57,38 @@ document.addEventListener("scroll", () => {
         }
     });
 });
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const items = document.querySelectorAll('.item');
+
+  // Create an intersection observer to trigger animations
+  const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              // Add the "show" class when the item is in view
+              entry.target.classList.add('show-feature');
+              observer.unobserve(entry.target); // Stop observing once shown
+          }
+      });
+  });
+
+  // Observe each item
+  items.forEach(item => {
+      observer.observe(item);
+  });
+});
+
+
+
+
+
+
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

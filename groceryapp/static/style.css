@@ -10,7 +10,6 @@
     border: none;
     outline: none;
     font-family: cursive;
-    /* font-family: 'cursive', sans-serif; */
 }
 
 html{
@@ -32,13 +31,16 @@ header{
     left: 0;
     width: 100%;
     padding: 3rem 9%;
-    background-color: transparent;
-    filter: drop-shadow(10px);
+    z-index: 1000; 
+    background-color: rgba(255, 255, 255, 0.35); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
 }
+
 
 .logo{
     font-size: 3rem;
@@ -53,7 +55,7 @@ header{
 }
 
 nav a{
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     color: rgb(0, 0, 0);
     margin-left: 4rem;
     font-weight: 500;
@@ -63,7 +65,8 @@ nav a{
 
 nav a:hover,
 nav a.active{
-    color: #77a612;
+    color: #abed1e;
+    font-weight: bolder;
     border-bottom: 3px solid #77a612;
 }
 
@@ -263,11 +266,17 @@ span{
     font-size: 1.7rem;
     margin-block: 15px 30px;
   }
-  
-  /* .cta .btn { margin-inline: auto; } */
 
 
+  /*-----------------------------------*\
+  #pop-up
+\*-----------------------------------*/
 
+ .pop-up {
+    display: flex; 
+    justify-content: space-around; 
+    margin-block: 5%;
+ }
 
 
   /*-----------------------------------*\
@@ -333,38 +342,89 @@ span{
 }
 
 
-.features {
-    text-align: center;
-    margin: 40px 0;
-}
+
+
+
+  /*-----------------------------------*\
+  #FEATURES
+\*-----------------------------------*/
+
+
+
 
 .feature-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.feature-item {
-    opacity: 0; /* Start invisible */
-    transform: translateX(100px); /* Start off to the right */
-    transition: transform 0.5s ease, opacity 0.5s ease;
-    margin: 0 20px;
+.feature-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* padding-left: 30px; Adjust left padding to prevent overlap with the line */
 }
 
-.feature-item.show {
-    opacity: 1; /* Fade in */
-    transform: translateX(0); /* Move to original position */
+.vertical-line {
+  position: absolute;
+  right: 75%;
+  height: 100%;
+  width: 2px;
+  background-color: #333;
 }
 
-@keyframes blurToRegular {
-    0% {
-        filter: blur(10px); /* Initial blur */
-    }
-    100% {
-        filter: blur(0); /* Final state without blur */
-    }
+.item {
+  display: flex;
+  align-items: center;
+  margin-block: 4%;
+  /* margin-left: 60px; Space between the line and cards */
+  opacity: 0; /* Start hidden for animation */
+  transform: translateX(50px); /* Start from the right */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
+
+.feature-img {
+  width: 60px;
+  height: 60px;
+  margin-right: 3%; 
+}
+
+.feature-card {
+  background-color: #beda83;
+  padding: 5%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.feature-heading {
+  font-size: 2rem;
+}
+
+.feature-details {
+  font-size: 1.5rem;
+}
+
+/* Animation trigger class */
+.show-feature {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Animation delay for each item */
+.item:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.item:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+.item:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
 
 
 
@@ -401,11 +461,11 @@ span{
     margin-block: 10px;
 }
 .neon-text {
-    color: #77a612; /* Neon green color */
+    color: #77a612; 
     text-shadow: 
         0 0 3px #77a612,
         0 0 5px #77a612,
-        0 0 10px #6c9f10; /* Reduced glow effect */
+        0 0 10px #6c9f10; 
     animation: blink 1.5s infinite; 
 }
 .newsletter-form {
@@ -413,6 +473,7 @@ span{
     margin-block: 2.5%;
     background-color: white;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     padding: 15px 25px;
     border-radius: 50px;
@@ -476,6 +537,107 @@ span{
         width: calc(100% + 8px);
     }
 }
+
+
+
+
+
+ /*-----------------------------------*\
+  #PRODUCTS
+\*-----------------------------------*/
+
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3%;
+  padding: 20px;
+  justify-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;
+}
+
+.card-details {
+  padding: 15px;
+  text-align: center;
+}
+
+.rating {
+  font-size: 18px;
+  color: gold;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.quantity, .price {
+  font-size: 14px;
+  color: #555;
+}
+
+/* .card:hover {
+  filter: blur(2px);
+} */
+
+.icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover .icons {
+  opacity: 1;
+}
+
+.fa {
+  margin: 0 10px;
+  font-size: 24px;
+  color: white;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .products-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .products-container {
+      grid-template-columns: 1fr; /* 1 column for mobile devices */
+  }
+
+  h1{
+    margin-left: 30%;
+    margin-top: 15%;
+    font-size: 3rem;
+    padding-block: 5%;
+  }
+}
+
+
 
 
  /*-----------------------------------*\
@@ -600,7 +762,7 @@ form.sign-in-form {
   border: 0.2rem solid #77a612;
   font-size: 2rem;
   border-radius: 50%;
-  margin: 3rem 1.5rem 3rem 0;
+  margin: 1rem 1.5rem 3rem 0;
   transition: 0.3s ease;
   color: #77a612;
 }
@@ -682,10 +844,18 @@ form.sign-in-form {
   margin: 0;
   background: none;
   border: 2px solid #fff;
-  /* width: 130px; */
   height: 45px;
   font-weight: 600;
   font-size: 1.5rem;
+}
+
+.neon-btn {
+  color: white;
+  text-shadow: 
+    0 0 2px white,
+    0 0 4px rgba(255, 255, 255, 0.6),
+    0 0 8px rgba(255, 255, 255, 0.4);
+  animation: blink 1.5s infinite; 
 }
 
 .right-panel .image,
@@ -877,6 +1047,8 @@ form.sign-in-form {
 @media (max-width: 570px) {
   form {
     padding: 0 1.5rem;
+    margin-left: auto;
+    grid-column: auto;
   }
 
   .image {

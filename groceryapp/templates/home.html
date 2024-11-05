@@ -13,9 +13,6 @@
 
 
 <div class="home" style="padding:0 9% 0; height: 85vh; margin-top: 6%">
-    {% comment %} <div class="home-img">
-        <img src="{% static 'landing.png' %}" alt="">
-    </div> {% endcomment %}
     <div class="home-content">
         <h1>Welcome to,, <span>ORGAMIC</span></h1>
         <h3 class="typing-text">Here you can find <span></span></h3>
@@ -57,7 +54,7 @@
 <div class="cta">
     <div class="container">
 
-        <h1 style="font-size: 5rem; color: #4d6a0f">Summer Offer</h1>
+        <h1 style="font-size: 5rem; color: #4d6a0f">Winter Offer</h1>
 
       <h2 class="h2 section-title">Up To 50% Off All Product.</h2>
 
@@ -65,7 +62,7 @@
         It has survived not only five centuries also leaped.
       </p>
 
-      <a href="/home/" class="btn">Shop Now <i class="fa-duotone fa-solid fa-angles-right" style="--fa-primary-color: #ffffff; --fa-secondary-color: #b8b8b8;"></i></a>
+      <a href="/products/" class="btn">Shop Now <i class="fa-duotone fa-solid fa-angles-right" style="--fa-primary-color: #ffffff; --fa-secondary-color: #b8b8b8;"></i></a>
 
     </div>
 </div>
@@ -78,17 +75,22 @@
 
 
 
-<div style="display: flex; margin-block: 5%">
+<div class="pop-up" style="display: flex; justify-content: space-around; margin-block: 5%">
     <img src="{% static 'safeShipping.gif' %}" alt="" width="220" height="234">
     <img src="{% static 'freeServices.gif' %}" alt="" width="220" height="234">
     <img src="{% static 'tracking.gif' %}" alt="" width="220" height="234">
 </div>
+
+
+
 
  <!-- 
         - #PARTNER
  -->
 
 
+
+ 
 <div class="partners">
     <div class="container">
 
@@ -111,7 +113,7 @@
     </div>
 </div>
 
-<div class="features" id="features">
+{% comment %} <div class="features" id="features">
     <h2>Features of Orgamic</h2>
     <div class="feature-container">
         <div class="feature-item">
@@ -127,7 +129,37 @@
             <p>Enjoy fast and reliable delivery services to ensure you get your groceries on time.</p>
         </div>
     </div>
+</div> {% endcomment %}
+
+
+<div class="feature-container">
+    <div class="vertical-line"></div>
+    <div class="feature-cards">
+        <div class="item">
+                <img class="feature-img" src="{% static 'fruit.png' %}" loading="lazy" alt="Fresh fruit">
+            <div class="feature-card">
+                <h3 class="feature-heading">1. Fresh Produce</h3>
+                <p class="feature-details">Get the freshest organic fruits and vegetables delivered to your doorstep.</p>
+            </div>
+        </div>
+        <div class="item">
+                <img class="feature-img" src="{% static 'grocery-cart.png' %}" loading="lazy" alt="Grocery-cart">
+            <div class="feature-card">
+                <h3 class="feature-heading"> Convenient Shopping</h3>
+                <p class="feature-details">Shop easily from the comfort of your home with our user-friendly platform.</p>
+            </div>
+        </div>
+        <div class="item">
+                <img class="feature-img" src="{% static 'delivery.png' %}" loading="lazy" alt="Delivery Truck">
+            <div class="feature-card">
+                <h3 class="feature-heading">3. Quick Delivery</h3>
+                <p class="feature-details">Enjoy fast and reliable delivery services to ensure you get your groceries on time.</p>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
   <!-- 
         - #NEWSLETTER
@@ -138,7 +170,7 @@
 
           <div class="newsletter-card">
 
-            <p class="newsletter-subtitle"> -- Subscribe Orgamic --</p>
+            <p class="newsletter-subtitle"> -- Be our Orgamic member--</p>
 
             <h2 class="newsletter-title">Sign Up To Orgamic & Get <span class="neon-text" style="color: #beda83">20% Off.</span></h2>
 

@@ -10,17 +10,17 @@
     <title>Grocery Shop</title>
 </head>
 <body>
-        <header style="background-color: white; margin-top: 0px;">
+        <header style="margin-top: 0px;">
             {% comment %} <a href="#" class="logo">Online Grocery Shop</a> {% endcomment %}
             <img class="logo" src="{% static 'orgamic.png' %}" alt=""  style="width: 6vw;">
     
             <nav>
-                <a href="/home/" class="active"> Home</a>
-                <a href="/about/" >About</a>
-                <a href="#" >Cart</a>
-                <a href="#" >Wishlist</a>
-                <a href="/login" >Login</a>
-                <a href="#" >Sign Up</a>
+                <a href="/home/" class="nav-link active"> Home</a>
+                <a href="/products/" class="nav-link">Product</a>
+                {% comment %} <a href="#" class="nav-link">My Order</a> {% endcomment %}
+                <a href="#" class="nav-link">My Cart</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/login/" class="nav-link">Login</a>
             </nav>
         </header>
         {% block body %}
