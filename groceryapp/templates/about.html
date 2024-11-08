@@ -1,6 +1,72 @@
 {% extends 'main.html' %}
 {% block body %}
-    <div style="margin-top: 6%">
-        <h1>This is about page</h1>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+<div style="background-color: #cdedc0">
+<h1 style="margin-top: 6%; padding-top: 5%; font-size: 3rem;text-align: center;">About Us</h1>
+<div class="about-container">
+    <div>
+        <h1 class="about-title"><span style="color: #77a612; font-weight: bold">ORGAMIC</span> - Your Trusted Online Grocery Partner</h1>
     </div>
+    <div class="about-description">
+        Welcome to <span style="color: #77a612; font-weight: bold">ORGAMIC</span>, your one-stop online grocery shop, bringing fresh, high-quality products straight to your doorstep. 
+        We are committed to offering a wide variety of groceries, from everyday essentials to specialty items, all sourced from trusted local suppliers and top brands. 
+        Our mission is to make your shopping experience convenient, fast, and hassle-free, with a focus on freshness, affordability, and excellent customer service. 
+        Whether you're stocking up for the week or looking for specific ingredients, we've got you covered. 
+        Enjoy seamless browsing, secure payment options, and prompt delivery right to your home. 
+        At <span style="color: #77a612; font-weight: bold">ORGAMIC</span>, we're more than just groceries — we're here to make your life easier. Thank you for choosing us for your shopping needs!
+    </div>
+</div>
+</div>
+
+<div style="display: flex;justify-content: center;align-items: center; margin-block: 5%">
+    <div class="image-grid">
+        <div class="main-image">
+            <img src="{% static 'about-1.png' %}" alt="">
+        </div>
+        <div class="image-item image-flex">
+            <img src="{% static 'about-2.png' %}" alt="">
+        </div>
+        <div class="image-item image-flex">
+            <img src="{% static 'about-3.png' %}" alt="">
+        </div>
+        <div class="image-item image-flex">
+            <img src="{% static 'about-4.png' %}" alt="">
+        </div>
+        <div class="image-item image-flex">
+            <img src="{% static 'about-5.png' %}" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="about-card-container">
+    <div class="about-card">
+        <img class="about-card-img" src="{% static 'goal.png' %}" alt="">
+        <h3 class="about-card-title">Our Goal</h3>
+        <p class="about-card-detail">Our goal is to provide fresh, high-quality groceries that support a healthy and fulfilling lifestyle. 
+            We strive to make grocery shopping accessible, enjoyable, and affordable for everyone. 
+            By focusing on quality and convenience, we aim to be a trusted part of our customers' daily lives.
+        </p>
+    </div>
+    <div class="about-card">
+        <img class="about-card-img" src="{% static 'mission.png' %}" alt="">
+        <h3 class="about-card-title">Our Mission</h3>
+        <p class="about-card-detail">Our mission is to transform grocery shopping into a seamless and sustainable experience. 
+            We are dedicated to offering a diverse selection of locally-sourced and responsibly-produced products. 
+            Through excellent service and a commitment to quality, we aim to bring the best of our community to your table.
+        </p>
+    </div>
+    <div class="about-card">
+        <img class="about-card-img" src="{% static 'ideology.png' %}" alt="">
+        <h3 class="about-card-title">Our Ideology</h3>
+        <p class="about-card-detail">We believe in the values of community, sustainability, and transparency. 
+            By prioritizing local partnerships and eco-friendly practices, we work to reduce our environmental impact and foster a culture of trust. 
+            Our goal is to be more than just a grocery store—we are a positive force for our customers, our community, and the planet.
+        </p>
+    </div>
+</div>
+  
 {% endblock %}
