@@ -17,9 +17,16 @@
                 <a href="/home/" class="nav-link active"> Home</a>
                 <a href="/products/" class="nav-link">Product</a>
                 {% comment %} <a href="#" class="nav-link">My Order</a> {% endcomment %}
-                <a href="#" class="nav-link">My Cart</a>
+                <a href="/cart/" class="nav-link">My Cart</a>
                 <a href="/about/" class="nav-link">About</a>
-                <a href="/login/" class="nav-link">Login</a>
+                {% comment %} <a href="/login/" class="nav-link">Login</a> {% endcomment %}
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">Login</a>
+                    <div class="dropdown-menu">
+                        <a href="/login/" class="dropdown-item">User Login</a>
+                        <a href="/admin-login/" class="dropdown-item">Admin Login</a>
+                    </div>
+                </div>
             </nav>
         </header>
         {% block body %}
@@ -82,7 +89,7 @@
               </div>
               <div>
                 <h3>Our Address</h3>
-                <p>9826 Painter Ave, Whittier, CA, United States.</p>
+                <p>9826 Painter Ave, Chittagong, Bangladesh.</p>
                 <p>+1800 396 756</p>
                 <p><a href="mailto:support@aahca.com">support@aahca.com</a></p>
                 <p><a href="http://www.freshgroceries.com">www.freshgroceries.com</a></p>
@@ -114,7 +121,7 @@
             </div>
         
             <!-- Social Icons -->
-            <div class="social-icons">
+            <div class="social-icons" style="display: flex; justify-content: center;">
               <a href="#"><i class="fab fa-instagram"></i></a>
               <a href="#"><i class="fab fa-facebook-f"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>

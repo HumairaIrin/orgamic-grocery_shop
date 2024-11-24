@@ -27,6 +27,25 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+function toggleDropdown(event) {
+    event.preventDefault(); // Prevent default link behavior
+    const dropdownMenu = event.target.nextElementSibling;
+    dropdownMenu.style.display =
+        dropdownMenu.style.display === "block" ? "none" : "block";
+}
+
+// Close dropdown if clicked outside
+document.addEventListener("click", function (event) {
+    const dropdowns = document.querySelectorAll(".dropdown-menu");
+    dropdowns.forEach((dropdown) => {
+        if (!dropdown.parentElement.contains(event.target)) {
+            dropdown.style.display = "none";
+        }
+    });
+});
+
+
+
 
 
 
