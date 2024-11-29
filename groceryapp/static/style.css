@@ -1,4 +1,3 @@
-/* New! Keyboard shortcuts … Drive keyboard shortcuts have been updated to give you first-letters navigation */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
 *
@@ -1342,6 +1341,10 @@ form.sign-in-form {
 
 
 
+/*-----------------------------------*\
+  #ADMIN
+\*-----------------------------------*/
+
 .card-admin{
   background: #000000;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -1398,3 +1401,43 @@ form.sign-in-form {
     transform: translate(0, 5px);
   }
 }
+
+
+
+
+/*-----------------------------------*\
+  #AdMIN BASE
+\*-----------------------------------*/
+.vertical-nav{
+  min-width : 17rem;
+  width : 17rem;/*16px   1rem*/
+  height:100vh;
+  position:fixed;
+  top:0;
+  left:0;
+  transition: all 0.4s;
+  }
+  
+  .page-content{
+  width:calc(100% - 17rem);
+  margin-left:17rem;
+  transition:all 0.4s;
+  }
+  
+  #sidebar.active{
+  margin-left : -17rem;
+  }
+  
+  #content.active{
+  width : 100%;
+  margin : 0;
+  }
+  
+  .dashboard-text{
+  /* letter-spacing : 0.1em; */
+  color : blue;
+  }
+  
+  .nav-link{
+  font-weight : bold;
+  }

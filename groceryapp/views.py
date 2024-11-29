@@ -21,6 +21,9 @@ def about(request):
 def login(request):
     return render(request, 'login.html')
 
+def adminBase(request):
+    return render(request, 'admin-base.html')
+
 
 def adminLogin(request):
     msg = None
@@ -32,11 +35,12 @@ def adminLogin(request):
         try:
             if user.is_staff:
                 msg = "User login successfully"
+                dic = {'msg': msg}   
+                return render(request, 'admin-base.html', dic)
             else:
                 msg = "try Invalid Credentials"
         except:
             msg = "Invalid Credentials"
-    dic = {'msg': msg}
-        
+    dic = {'msg': msg}   
     return render(request, 'admin-login.html', dic)
 
