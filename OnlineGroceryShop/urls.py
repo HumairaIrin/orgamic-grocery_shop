@@ -29,5 +29,12 @@ urlpatterns = [
     path('about/', about, name="about"),
     path('login/', login, name="login"),
     path('admin-login/', adminLogin, name="admin-login"),
+    path('admin-dashboard/', adminDashboard, name="admin-dashboard"),
     path('admin-home/', adminBase, name="admin-home"),
+    path('add-category/', addCategory, name="add-category"),
+    path('view-category/', viewCategory, name="view-category"),
+    path('edit-category/<int:pid>/', editCategory, name="edit-category"),
+    path('delete-category/<int:pid>/', deleteCategory, name="delete-category"),
+    path('add-product/', addProduct, name='add-product'),
+    path('view-product/', viewProduct, name='view-product'),
 ]

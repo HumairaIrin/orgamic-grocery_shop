@@ -51,6 +51,9 @@ document.addEventListener("click", function (event) {
 
 
 
+
+
+
 document.addEventListener("scroll", () => {
     const logos = document.querySelectorAll(".partner-logo");
     const header = document.querySelector(".partners-title");
