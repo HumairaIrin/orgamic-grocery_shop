@@ -18,6 +18,8 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from groceryapp.views import * 
 
 urlpatterns = [
@@ -27,6 +29,7 @@ urlpatterns = [
     path('products/', products, name="products"),
     path('cart/', cart, name="cart"),
     path('about/', about, name="about"),
+    path('registration/', registration, name="registration"),
     path('login/', login, name="login"),
     path('admin-login/', adminLogin, name="admin-login"),
     path('admin-dashboard/', adminDashboard, name="admin-dashboard"),
@@ -37,4 +40,6 @@ urlpatterns = [
     path('delete-category/<int:pid>/', deleteCategory, name="delete-category"),
     path('add-product/', addProduct, name='add-product'),
     path('view-product/', viewProduct, name='view-product'),
-]
+    path('edit-product/<int:pid>/', editProduct, name="edit-product"),
+    path('delete-product/<int:pid>/', deleteProduct, name="delete-product"),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
