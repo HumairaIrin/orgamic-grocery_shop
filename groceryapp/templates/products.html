@@ -1,129 +1,73 @@
 {% extends 'main.html' %}
-{% block body %}
 {% load static %}
-
+{% block body %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="{% static 'style.css' %}">
-<script src="{% static 'script.js' %}" defer></script>
 
-
-<div style="margin-top: 6%;">
-    <h1 style="margin-left: 45%; font-size: 3rem; padding-block: 5%;">All Products</h1>
-    <div class="products-container">
-        <div class="card">
-            <div class="card-image">
-                <img src="https://www.simplotfoods.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F0dkgxhks0leg%2FRKiZ605RAV8kjDQnxFCWP%2Fb03b8729817c90b29b88d536bfd37ac5%2F9-Unusual-Uses-For-Potatoes.jpg%3Ffm%3Dwebp&w=1920&q=75" alt="Product Image">
-            </div>
-            <div class="card-details">
-                <div class="rating">
-                    ★★★★☆
-                </div>
-                <div class="product-name">Potato</div>
-                <div class="quantity">Quantity: 1 kg</div>
-                <div class="price">60.66 taka</div>
-                <div class="icons">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    <i class="fa fa-heart" aria-hidden="true"></i>
-                </div>
-            </div>
-        </div>
-
-
-        
-        <div class="card">
-            <div class="card-image">
-                <img src="https://cdn-prod.medicalnewstoday.com/content/images/articles/276/276714/red-and-white-onions.jpg" alt="Product Image">
-            </div>
-            <div class="card-details">
-                <div class="rating">
-                    ★★★★☆
-                </div>
-                <div class="product-name">Onion</div>
-                <div class="quantity">Quantity: 1 kg</div>
-                <div class="price">200 taka</div>
-                <div class="icons">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    <i class="fa fa-heart" aria-hidden="true"></i>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div class="card-image">
-                <img src="https://canadianfoodfocus.org/wp-content/uploads/2020/09/types-of-cabbage-1024x576.jpg" alt="Product Image">
-            </div>
-            <div class="card-details">
-                <div class="rating">
-                    ★★★★☆
-                </div>
-                <div class="product-name">Cabbage</div>
-                <div class="quantity">Quantity: 1 kg</div>
-                <div class="price">120 taka</div>
-                <div class="icons">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    <i class="fa fa-heart" aria-hidden="true"></i>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div class="card-image">
-                <img src="https://images.healthshots.com/healthshots/en/uploads/2024/06/27160404/1-25.jpg" alt="Product Image">
-            </div>
-            <div class="card-details">
-                <div class="rating">
-                    ★★★★☆
-                </div>
-                <div class="product-name">Pomegranate</div>
-                <div class="quantity">Quantity: 1 kg</div>
-                <div class="price">480 taka</div>
-                <div class="icons">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    <i class="fa fa-heart" aria-hidden="true"></i>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div class="card-image">
-                <img src="https://images.healthshots.com/healthshots/en/uploads/2024/04/04153309/avocado-1.jpg" alt="Product Image">
-            </div>
-            <div class="card-details">
-                <div class="rating">
-                    ★★★★☆
-                </div>
-                <div class="product-name">Avocado</div>
-                <div class="quantity">Quantity: 1 kg</div>
-                <div class="price">650 taka</div>
-                <div class="icons">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    <i class="fa fa-heart" aria-hidden="true"></i>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div class="card-image">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBGcTL4lY0WceZm1nyccnB8l2uhS29tLVfTw&s" alt="Product Image">
-            </div>
-            <div class="card-details">
-                <div class="rating">
-                    ★★★★☆
-                </div>
-                <div class="product-name">Orange</div>
-                <div class="quantity">Quantity: 1 kg</div>
-                <div class="price">360 taka</div>
-                <div class="icons">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    <i class="fa fa-heart" aria-hidden="true"></i>
-                </div>
-            </div>
-        </div>
-
+<div class="products-layout" style="display: grid; grid-template-columns: 350px 1fr; height: 100vh; overflow: hidden; margin-top: 8%;">
+    <!-- Sidebar -->
+    <div class="sidebar bg-light border-right" style="font-size: medium;">
+      <div class="sidebar-heading">Start Filtering</div>
+      <div class="list-group list-group-flush">
+        <a href="{% url 'products' 0 %}" class="list-group-item list-group-item-action bg-light">
+          All Product
+        </a>
+        {% for i in allcategory %}
+        <a href="{% url 'products' i.id %}" class="list-group-item list-group-item-action bg-light">
+          {{ i.name }}
+        </a>
+        {% endfor %}
+      </div>
     </div>
-</div>
+  
+    <!-- Product Section -->
+    <div class="product-section">
+      <nav class="navbar navbar-expand-lg navbar-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">
+          <i class="fa fa-bars"></i>
+        </button>
+        <h3 style="color: black; margin-left:30%; font-size: x-large;">View {{ category.name }} Product</h3>
+      </nav>
+      <div class="products-container">
+        {% for j in product %}
+        <div class="product-card">
+          <!-- Image Section -->
+          <div class="image-container">
+            <img src="{{ j.image.url }}" alt="Product Image" class="product-image">
+            <div class="heart-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+          </div>
+          <div class="product-details">
+            <div class="weight-options">
+              <button>500gm</button>
+              <button>800gm</button>
+            </div>
+            <div class="product-rating">
+              <div class="stars">★★★★☆</div>
+              <span>3.2</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">Rs.{{ j.price }}</span>
+              <span class="original-price">$150.00</span>
+              <span class="discount">-28%</span>
+            </div>
+            <p class="product-name">{{ j.name }}</p>
+            <a href="/add-to-cart/{{j.id}}/">
+              <button class="add-to-cart-btn">Add To Cart</button>
+            </a>
+            <a href="/product-detail/{{j.id}}/" >
+              <button class="view-product-btn" style="background-color: #00ffde99;">View Product</button>
+            </a>
+          </div>
+        </div>
+        {% empty %}
+        <div class="no-products">
+          <img src="{% static 'images/empty.jpg' %}" alt="No Products Available">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 
 {% endblock %}

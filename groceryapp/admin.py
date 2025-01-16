@@ -8,6 +8,7 @@ admin.site.register(Product)
 
 admin.site.register(UserProfile)
 
+admin.site.register(Cart)
 
 
 

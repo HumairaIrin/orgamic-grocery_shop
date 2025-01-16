@@ -1,12 +1,58 @@
 {% extends 'main.html' %}
 {% block body %}
 {% load static %}
+{% load custom_tags %}
 
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="{% static 'style.css' %}">
 <script src="{% static 'script.js' %}" defer></script>
 
-<div style="margin-top: 6%;">
-    <h1>Cart</h1>
+<div class="container-fluid" style="margin-top: 10%;">
+    <div class="container">
+        <h2 style="font-size:bold; margin-bottom: 5%">
+            My Cart
+            <a href="/user-product/0/" class="btn btn-warning " style="float:right">Continue Shopping</a>   
+            <a href="#" class="btn btn-info mr-2" style="float:right">Buy Now</a>
+        <h2>
+        <table class="table table-bordered" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i, j in product.items %}
+                <tr>
+                    <td>
+                        <img class="img-thumbnail" src="{{i|productimage}}" alt="product" style="width:100px;height:100px"></a>
+                    </td>
+                    <td><a href="/product-detail/{{i}}/">{{i|productname}}</a></td>
+                    <td>{{i|productprice}}</td>
+                    <td style="width:15%">
+                        <div class="input-group" style="justify-content: center;">
+                            <a href="/incredecre/{{i}}/?action=decre" class="btn-warning pull-left" id="decrebtn-{{forloop.counter}}" style="padding: 5%; text-decoration: none;">-</a>
+                            <input type="text" class="cart-plus-minus-box" type="text" style="width:30%;border:1px solid grey; text-align: center;" id="shop_qty-{{forloop.counter}}" name="qtybutton" value="{{j}}" readonly/>
+                            <a href="/incredecre/{{i}}/?action=incre" class="btn-warning pull-right" style="padding: 5%; text-decoration: none;">+</a>
+                        </div>
+                    </td>
+                    <td id="totalprice-{{forloop.counter}}" style="text-align: center;">{% producttotalprice i j %}</td>
+                    <td>
+                        <a href="/deletecart/{{i}}/" class="btn-danger" style="padding: 2% 5%;"><i class="fa fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="4"></td>
+                    <td colspan="2" id="total-price"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-
 {% endblock %}

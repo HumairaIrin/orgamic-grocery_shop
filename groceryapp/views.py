@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.http import JsonResponse
+import json
 from .models import *
 
 # Create your views here.
@@ -189,9 +191,181 @@ def login(request):
         password = request.POST['password']
         user = authenticate(username=username, password=password)
         if user:
-            login(request, user)
+            auth_login(request, user)
             messages.success(request, "User login successfully")
             return redirect('home')
         else:
             messages.success(request,"Invalid Credentials")
     return render(request, 'login.html', locals())
+
+
+
+
+
+
+def updateProfile(request):
+    data = UserProfile.objects.get(user=request.user)
+    if request.method == "POST":
+        name = request.POST['user_name']
+        email = request.POST['email']
+        address = request.POST['address']
+        mobile = request.POST['mobile']
+        pass
+        user = User.objects.filter(id=request.user.id).update(username=name)
+        UserProfile.objects.filter(id=data.id).update(mobile=mobile, address=address)
+        messages.success(request, "Profile updated")
+        return redirect('update-profile')
+    return render(request, 'update-profile.html', locals())
+
+
+
+
+
+def change_password(request):
+    if request.method == 'POST':
+        o = request.POST.get('currentpassword')
+        n = request.POST.get('newpassword')
+        c = request.POST.get('confirmpassword')
+        user = authenticate(username=request.user.username, password=o)
+        if user:
+            if n == c:
+                user.set_password(n)
+                user.save()
+                messages.success(request, "Password Changed")
+                return redirect('home')
+            else:
+                messages.success(request, "Password not matching")
+                return redirect('change-password')
+        else:
+            messages.success(request, "Invalid Password")
+            return redirect('change-password')
+    return render(request, 'change-password.html')
+
+
+
+
+
+
+def logOut(request):
+    logout(request)
+    messages.success(request, "Logout Successfully")
+    return redirect('home')
+
+
+
+
+
+
+def products(request,pid):
+    if pid == 0:
+        product = Product.objects.all()
+    else:
+        category = Category.objects.get(id=pid)
+        product = Product.objects.filter(category=category)
+    allcategory = Category.objects.all()
+    return render(request, "products.html", locals())
+
+
+
+
+def product_detail(request, pid):
+    product = Product.objects.get(id=pid)
+    latest_product = Product.objects.filter().exclude(id=pid).order_by('-id')[:10]
+    return render(request, "product-detail.html", locals())
+
+
+def addToCart(request, pid):
+    myli = {"objects":[]}
+    try:
+        cart = Cart.objects.get(user=request.user)
+        myli = json.loads((str(cart.product)).replace("'", '"'))
+        try:
+            myli['objects'][0][str(pid)] = myli['objects'][0].get(str(pid), 0) + 1
+        except:
+            myli['objects'].append({str(pid):1})
+        cart.product = myli
+        cart.save()
+    except:
+        myli['objects'].append({str(pid): 1})
+        cart = Cart.objects.create(user=request.user, product=myli)
+    return redirect('cart')
+
+
+# def addToCart(request, pid):
+#     if request.method == "POST":
+#         myli = {"objects": []}
+#         try:
+#             cart = Cart.objects.get(user=request.user)
+#             myli = json.loads((str(cart.product)).replace("'", '"'))
+#             try:
+#                 myli['objects'][0][str(pid)] = myli['objects'][0].get(str(pid), 0) + 1
+#             except KeyError:
+#                 myli['objects'].append({str(pid): 1})
+#             cart.product = myli
+#             cart.save()
+#         except Cart.DoesNotExist:
+#             myli['objects'].append({str(pid): 1})
+#             cart = Cart.objects.create(user=request.user, product=myli)
+#         return redirect('cart')
+#     else:
+#         return JsonResponse({"error": "Invalid request method"}, status=400)
+
+
+
+
+def incredecre(request, pid):
+    cart = Cart.objects.get(user=request.user)
+    if request.GET.get('action') == "incre":
+        myli = json.loads((str(cart.product)).replace("'", '"'))
+        myli['objects'][0][str(pid)] = myli['objects'][0].get(str(pid), 0) + 1
+    if request.GET.get('action') == "decre":
+        myli = json.loads((str(cart.product)).replace("'", '"'))
+        if myli['objects'][0][str(pid)] == 1:
+            del myli['objects'][0][str(pid)]
+        else:
+            myli['objects'][0][str(pid)] = myli['objects'][0].get(str(pid), 0) - 1
+    cart.product = myli
+    cart.save()
+    return redirect('cart')
+
+
+def cart(request):
+    try:
+        cart = Cart.objects.get(user=request.user)
+        product = (cart.product).replace("'", '"')
+        myli = json.loads(str(product))
+        product = myli['objects'][0]
+    except:
+        product = []
+    lengthpro = len(product)
+    return render(request, 'cart.html', locals())
+
+# def cart(request):
+#     try:
+#         # Get the cart for the current user
+#         cart = Cart.objects.get(user=request.user)
+        
+#         # Load the product data as JSON
+#         product_data = json.loads(cart.product.replace("'", '"'))
+#         product = product_data['objects'][0]  # Extract the product dictionary
+#     except Cart.DoesNotExist:
+#         product = {}  # Empty if no cart
+
+#     lengthpro = len(product)  # Count products in the cart
+
+#     # Render the `cart.html` template with locals()
+#     return render(request, 'cart.html', locals())
+
+
+
+
+
+def deletecart(request, pid):
+    cart = Cart.objects.get(user=request.user)
+    product = (cart.product).replace("'", '"')
+    myli = json.loads(str(product))
+    del myli['objects'][0][str(pid)]
+    cart.product = myli
+    cart.save()
+    messages.success(request, "Delete Successfully")
+    return redirect('cart')
