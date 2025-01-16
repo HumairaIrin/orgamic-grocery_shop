@@ -35,13 +35,13 @@
                     <td><a href="/product-detail/{{i}}/">{{i|productname}}</a></td>
                     <td>{{i|productprice}}</td>
                     <td style="width:15%">
-                        <div class="input-group" style="justify-content: center;">
+                        <div class="input-group" >
                             <a href="/incredecre/{{i}}/?action=decre" class="btn-warning pull-left" id="decrebtn-{{forloop.counter}}" style="padding: 5%; text-decoration: none;">-</a>
                             <input type="text" class="cart-plus-minus-box" type="text" style="width:30%;border:1px solid grey; text-align: center;" id="shop_qty-{{forloop.counter}}" name="qtybutton" value="{{j}}" readonly/>
                             <a href="/incredecre/{{i}}/?action=incre" class="btn-warning pull-right" style="padding: 5%; text-decoration: none;">+</a>
                         </div>
                     </td>
-                    <td id="totalprice-{{forloop.counter}}" style="text-align: center;">{% producttotalprice i j %}</td>
+                    <td id="totalprice-{{forloop.counter}}" >{% producttotalprice i j %}</td>
                     <td>
                         <a href="/deletecart/{{i}}/" class="btn-danger" style="padding: 2% 5%;"><i class="fa fa-trash-alt"></i></a>
                     </td>
