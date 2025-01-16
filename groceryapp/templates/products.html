@@ -40,17 +40,17 @@
           </div>
           <div class="product-details">
             <div class="weight-options">
-              <button>500gm</button>
-              <button>800gm</button>
+              <button>1/2 kg</button>
+              <button>1 kg</button>
             </div>
-            <div class="product-rating">
+            <div class="product-rating" style="font-size: 15px;">
               <div class="stars">★★★★☆</div>
-              <span>3.2</span>
+              <span >3.2</span>
             </div>
-            <div class="product-price">
+            <div class="product-price" style="font-size: 14px;">
               <span class="current-price">Rs.{{ j.price }}</span>
-              <span class="original-price">$150.00</span>
-              <span class="discount">-28%</span>
+              {% comment %} <span class="original-price">$150.00</span> {% endcomment %}
+              <span class="discount">-10%</span>
             </div>
             <p class="product-name">{{ j.name }}</p>
             <a href="/add-to-cart/{{j.id}}/">

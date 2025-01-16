@@ -291,25 +291,6 @@ def addToCart(request, pid):
     return redirect('cart')
 
 
-# def addToCart(request, pid):
-#     if request.method == "POST":
-#         myli = {"objects": []}
-#         try:
-#             cart = Cart.objects.get(user=request.user)
-#             myli = json.loads((str(cart.product)).replace("'", '"'))
-#             try:
-#                 myli['objects'][0][str(pid)] = myli['objects'][0].get(str(pid), 0) + 1
-#             except KeyError:
-#                 myli['objects'].append({str(pid): 1})
-#             cart.product = myli
-#             cart.save()
-#         except Cart.DoesNotExist:
-#             myli['objects'].append({str(pid): 1})
-#             cart = Cart.objects.create(user=request.user, product=myli)
-#         return redirect('cart')
-#     else:
-#         return JsonResponse({"error": "Invalid request method"}, status=400)
-
 
 
 
@@ -340,22 +321,6 @@ def cart(request):
     lengthpro = len(product)
     return render(request, 'cart.html', locals())
 
-# def cart(request):
-#     try:
-#         # Get the cart for the current user
-#         cart = Cart.objects.get(user=request.user)
-        
-#         # Load the product data as JSON
-#         product_data = json.loads(cart.product.replace("'", '"'))
-#         product = product_data['objects'][0]  # Extract the product dictionary
-#     except Cart.DoesNotExist:
-#         product = {}  # Empty if no cart
-
-#     lengthpro = len(product)  # Count products in the cart
-
-#     # Render the `cart.html` template with locals()
-#     return render(request, 'cart.html', locals())
-
 
 
 
@@ -369,3 +334,46 @@ def deletecart(request, pid):
     cart.save()
     messages.success(request, "Delete Successfully")
     return redirect('cart')
+
+
+
+
+def booking(request):
+    user = UserProfile.objects.get(user=request.user)
+    cart = Cart.objects.get(user=request.user)
+    total = 0
+    productid = (cart.product).replace("'", '"')
+    productid = json.loads(str(productid))
+    try:
+        productid = productid['objects'][0]
+    except:
+        messages.success(request, "Cart is empty, Please add product in cart.")
+        return redirect('cart')
+    for i,j in productid.items():
+        product = Product.objects.get(id=i)
+        total += int(j) * int(product.price)
+    if request.method == "POST":
+        book = Booking.objects.create(user=request.user, product=cart.product, total=total)
+        cart.product = {'objects':[]}
+        cart.save()
+        messages.success(request, "Book Order Successfully")
+        return redirect('home')
+    return render(request, "booking.html", locals())
+
+
+
+
+
+
+def myOrder(request):
+    order = Booking.objects.filter(user=request.user)
+    return render(request, "my-order.html", locals())
+
+
+
+
+
+def user_order_track(request, pid):
+    order = Booking.objects.get(id=pid)
+    orderstatus = ORDERSTATUS
+    return render(request, "user-order-track.html", locals())

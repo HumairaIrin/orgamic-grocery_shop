@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% block body %}
+{% load static %}
+
+<title>My Order</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<script src="{% static 'script.js' %}" defer></script>
+
+<hr class="mt-0">
+<div class="card shadow" id="myorder" style="margin: 9% 4% 6% 4%; display: flex; justify-self: center;">
+    <div class="card-body">
+        <div class="container-fluid" style="font-size: 16px">
+            <h3 style="font-size: 20px; margin-bottom: 2%">My Order</h3>
+            <table class="table table-bordered" style="width:100%">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>BookingID</th>
+                    <th>TotalPrice</th>
+                    <th>Status</th>
+                    <th>CreationDate</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in order %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.id}}</td>
+                    <td>{{i.total}}</td>
+                    <td><a href="/user-order-track/{{i.id}}/" class="btn-primary px-3 py-2" style="text-decoration: none;" title="Track Status">{{i.get_status_display}}</a></td>
+                    <td>{{i.created}}</td>
+                    <td>
+                        <a href="" class=" btn-success px-2 py-2" style="border-radius: 3%" title="Return Order"><i class="fa fa-refresh"></i></a>
+                        <a href="" class="btn-danger px-3 py-2" style="border-radius: 3%" title="Cancel Order"><i class="fa-solid fa-xmark"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

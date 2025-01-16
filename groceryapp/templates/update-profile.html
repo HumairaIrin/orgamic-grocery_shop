@@ -6,28 +6,28 @@
 
 <div class="card shadow" style="margin: 9% 4% 6% 4%; display: flex; justify-self: center;">
     <div class="card-body">
-        <h3 class="p-2 text-danger" style="border-bottom: 2px solid orange;">My Profile</h3>
+        <h3 class="p-2 text-danger" style="border-bottom: 2px solid orange; font-weight: bolder;">My Profile</h3>
         <div class="container-fluid">
-            <form method="POST"  enctype="multipart/form-data" style="font-size: 13px;">
+            <form method="POST"  enctype="multipart/form-data" style="font-size: 17px;">
                 {% csrf_token %}
                 <div class="form-row">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" name="user_name" placeholder="Enter Your Name"  class="form-control" value="{{data.user.username}}">
+                            <input type="text" name="user_name" placeholder="Enter Your Name"  class="form-control" style="font-size: 15px;" value="{{data.user.username}}">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Email ID</label>
-                            <input type="email" name="email" readonly placeholder="Email Address" required class="form-control" value="{{data.user.email}}">
+                            <input type="email" name="email" readonly placeholder="Email Address" required class="form-control" style="font-size: 15px;" value="{{data.user.email}}">
                         </div>
                     </div>
             
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Contact</label>
-                            <input type="text" name="mobile" placeholder="Contact Number" required class="form-control" value="{{data.mobile}}">
+                            <input type="text" name="mobile" placeholder="Contact Number" required class="form-control" style="font-size: 15px;" value="{{data.mobile}}">
                         </div>
                     </div>
             
@@ -47,12 +47,12 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label>Address</label>
-                            <textarea name="address" class="form-control" placeholder="Full Address">{{data.address}}</textarea>
+                            <textarea name="address" class="form-control" style="font-size: 15px;" placeholder="Full Address">{{data.address}}</textarea>
                         </div>
                     </div>
             
                 </div>
-                <input type="submit" value="Submit" class="m-2 px-3 btn btn-primary">
+                <input type="submit" value="Submit" class="m-2 px-3 btn btn-primary" style="font-size: 15px;">
             </form>
         </div>
     </div>

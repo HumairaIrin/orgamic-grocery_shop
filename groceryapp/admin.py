@@ -10,5 +10,5 @@ admin.site.register(UserProfile)
 
 admin.site.register(Cart)
 
-
+admin.site.register(Booking)
 
