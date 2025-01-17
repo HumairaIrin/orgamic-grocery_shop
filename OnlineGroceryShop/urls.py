@@ -35,6 +35,7 @@ urlpatterns = [
     path('booking/', booking, name="booking"),
     path('my-order/', myOrder, name="myorder"),
     path('user-order-track/<int:pid>/', user_order_track, name="user_order_track"),
+    path('change-order-status/<int:pid>/', change_order_status, name="change_order_status"),
     path('about/', about, name="about"),
     path('registration/', registration, name="registration"),
     path('login/', login, name="login"),

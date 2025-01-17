@@ -7,19 +7,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Get the current path
   const currentPath = window.location.pathname;
-
+  
   navLinks.forEach(link => {
       // If the link's href matches the current path, set it as active
       if (link.getAttribute('href') === currentPath) {
           link.classList.add('active');
-      } else {
-          link.classList.remove('active');
-      }
-
-      // Add click event listener
-      link.addEventListener('click', function() {
-          // Remove the active class from all links
-          navLinks.forEach(nav => nav.classList.remove('active'));
+        } else {
+            link.classList.remove('active');
+        }
+        
+        // Add click event listener
+        link.addEventListener('click', function() {
+            // Remove the active class from all links
+            navLinks.forEach(nav => nav.classList.remove('active'));
           // Add the active class to the clicked link
           this.classList.add('active');
       });

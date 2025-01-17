@@ -26,7 +26,7 @@
         <button class="btn btn-primary" id="menu-toggle">
           <i class="fa fa-bars"></i>
         </button>
-        <h3 style="color: black; margin-left:30%; font-size: x-large;">View {{ category.name }} Product</h3>
+        <h3 style="color: black; margin-left:30%; font-size: x-large;">{% if category.name %}{{ category.name }}{% else %}All Products{% endif %}</h3>
       </nav>
       <div class="products-container">
         {% for j in product %}
@@ -53,7 +53,7 @@
               <span class="discount">-10%</span>
             </div>
             <p class="product-name">{{ j.name }}</p>
-            <a href="/add-to-cart/{{j.id}}/">
+            <a href= {% if  request.user.is_authenticated %}"/add-to-cart/{{j.id}}/"{% else %}"/login/"{% endif %}>
               <button class="add-to-cart-btn">Add To Cart</button>
             </a>
             <a href="/product-detail/{{j.id}}/" >

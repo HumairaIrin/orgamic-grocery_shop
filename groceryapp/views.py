@@ -377,3 +377,15 @@ def user_order_track(request, pid):
     order = Booking.objects.get(id=pid)
     orderstatus = ORDERSTATUS
     return render(request, "user-order-track.html", locals())
+
+
+
+
+def change_order_status(request, pid):
+    order = Booking.objects.get(id=pid)
+    status = request.GET.get('status')
+    if status:
+        order.status = status
+        order.save()
+        messages.success(request, "Order status changed.")
+    return redirect('myorder')
