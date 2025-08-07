@@ -13,8 +13,8 @@ def main(request):
 def home(request):
     return render(request, 'home.html')
 
-def products(request):
-    return render(request, 'products.html')
+# def products(request):
+#     return render(request, 'products.html')
 
 def cart(request):
     return render(request, 'cart.html')
@@ -30,6 +30,56 @@ def adminBase(request):
 
 def adminDashboard(request):
     return render(request, 'admin-dashboard.html')
+
+
+
+
+def products(request, pid):
+    all_products = list(Product.objects.select_related('category').all())
+    all_products.sort(key=lambda x: x.category.id)
+
+    if pid == 0:
+        filtered_products = all_products  # Show all
+    else:
+        filtered_products = binary_search_category(all_products, pid) 
+
+    return render(request, 'products.html', {
+        'product': filtered_products, 
+        'category': Category.objects.get(id=pid) if pid != 0 else '',
+        'allcategory': Category.objects.all()
+    })
+
+
+
+def binary_search_category(products, target_category_id):
+    result = []
+    left = 0
+    right = len(products) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+        mid_cat_id = products[mid].category.id
+
+        if mid_cat_id == target_category_id:
+            # Matching category paowar por both side e gather kori
+            l = mid
+            while l >= 0 and products[l].category.id == target_category_id:
+                l -= 1
+            l += 1
+
+            r = mid
+            while r < len(products) and products[r].category.id == target_category_id:
+                r += 1
+
+            result = products[l:r]  # matched product gulo store kori
+            break
+
+        elif mid_cat_id < target_category_id:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return result
 
 
 
